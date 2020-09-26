@@ -5,6 +5,47 @@ from PIL import ImageTk, Image
 import os
 
 path = "../piezas-ajedrez/"
+class Tablero(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        self.filas = 8
+        self.columnas = 8
+        self.dim_casilla = 64
+        self.color_casillas = "green"
+        self.dim_borde=0
+        self.el_tablero = tk.Canvas(
+            width=(self.filas * self.dim_casilla),
+            height=(self.columnas * self.dim_casilla)
+            )
+    
+        self.el_tablero.pack()
+        self.el_tablero.place(x=210, y = 20)
+        self.fill_board()
+        self.el_tablero.bind("<Button-1>", self.on_board_click)
+
+    def fill_board(self):
+        # vamos a pintar un tablero de 16x16 rectángulos
+        for r in range(self.filas):
+            for c in range(self.columnas):
+                id_casilla = (
+                    f"{r + 1:0{len(str(self.filas))}d}|"
+                    f"{c + 1:0{len(str(self.columnas))}d}")
+                x1, y1 = c * self.dim_casilla, r * self.dim_casilla
+                x2, y2 = x1 + self.dim_casilla, y1 + self.dim_casilla 
+                self.el_tablero.create_rectangle(
+                    x1, y1, x2, y2,
+                    fill=self.color_casillas,
+                    tags=id_casilla
+                    )
+
+    def on_board_click(self, event):
+        columna = (event.x - self.dim_borde) // self.dim_casilla
+        fila = (event.y - self.dim_borde) // self.dim_casilla
+        id_casilla = (
+            f"{fila + 1:0{len(str(self.filas))}d}|"
+            f"{columna + 1:0{len(str(self.columnas))}d}")
+        self.el_tablero.itemconfig(id_casilla, fill='blue')
+        print("columa: " + str(columna) + " fila: " + str(fila))
 
 OptionList = [
 "Chess Assistant",
@@ -132,6 +173,8 @@ rey_negro = ImageTk.PhotoImage(Image.open(path + "Rnb.jpg"))
 rey_n = tk.Label(ventana, image = rey_negro )
 rey_n.pack(side = "bottom", fill = "both", expand = "yes")
 rey_n.place(x = 450, y = 500)
+
+Tablero(ventana).pack()
 
 
 ventana.mainloop()

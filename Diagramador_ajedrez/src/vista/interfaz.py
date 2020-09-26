@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
 import tkinter as tk
+from PIL import ImageTk, Image
+import os
+
+path = "../piezas-ajedrez/"
 
 OptionList = [
 "Chess Assistant",
@@ -68,7 +72,66 @@ button = tk.Button(ventana ,text = "Cerrar", command = ventana.destroy)
 button.pack()
 button.place(x=400, y=60)
 
-#panel = tk.Label(ventana, image = img)
-#panel.pack(side = "bottom", fill = "both", expand = "yes")
+# Definición de las piezas
+alfil_blanco = ImageTk.PhotoImage(Image.open(path + "Abb.jpg"))
+alfil_b = tk.Label(ventana, image = alfil_blanco )
+alfil_b.pack(side = "bottom", fill = "both", expand = "yes")
+alfil_b.place(x = 200, y = 100)
+
+alfil_negro = ImageTk.PhotoImage(Image.open(path + "Anb.jpg"))
+alfil_n = tk.Label(ventana, image = alfil_negro )
+alfil_n.pack(side = "bottom", fill = "both", expand = "yes")
+alfil_n.place(x = 200, y = 500)
+
+caballo_blanco = ImageTk.PhotoImage(Image.open(path + "Cbb.jpg"))
+caballo_b = tk.Label(ventana, image = caballo_blanco )
+caballo_b.pack(side = "bottom", fill = "both", expand = "yes")
+caballo_b.place(x = 250, y = 100)
+
+caballo_negro = ImageTk.PhotoImage(Image.open(path + "Cnb.jpg"))
+caballo_n = tk.Label(ventana, image = caballo_negro )
+caballo_n.pack(side = "bottom", fill = "both", expand = "yes")
+caballo_n.place(x = 250, y = 500)
+
+torre_blanco = ImageTk.PhotoImage(Image.open(path + "Tbb.jpg"))
+torre_b = tk.Label(ventana, image = torre_blanco )
+torre_b.pack(side = "bottom", fill = "both", expand = "yes")
+torre_b.place(x = 300, y = 100)
+
+torre_negro = ImageTk.PhotoImage(Image.open(path + "Tnb.jpg"))
+torre_n = tk.Label(ventana, image = torre_negro )
+torre_n.pack(side = "bottom", fill = "both", expand = "yes")
+torre_n.place(x = 300, y = 500)
+
+peon_blanco = ImageTk.PhotoImage(Image.open(path + "Pbb.jpg"))
+peon_b = tk.Label(ventana, image = peon_blanco )
+peon_b.pack(side = "bottom", fill = "both", expand = "yes")
+peon_b.place(x = 350, y = 100)
+
+peon_negro = ImageTk.PhotoImage(Image.open(path + "Pnb.jpg"))
+peon_n = tk.Label(ventana, image = peon_negro )
+peon_n.pack(side = "bottom", fill = "both", expand = "yes")
+peon_n.place(x = 350, y = 500)
+
+dama_blanco = ImageTk.PhotoImage(Image.open(path + "Dbb.jpg"))
+dama_b = tk.Label(ventana, image = dama_blanco )
+dama_b.pack(side = "bottom", fill = "both", expand = "yes")
+dama_b.place(x = 400, y = 100)
+
+dama_negro = ImageTk.PhotoImage(Image.open(path + "Dnb.jpg"))
+dama_n = tk.Label(ventana, image = dama_negro )
+dama_n.pack(side = "bottom", fill = "both", expand = "yes")
+dama_n.place(x = 400, y = 500)
+
+rey_blanco = ImageTk.PhotoImage(Image.open(path + "Rbb.jpg"))
+rey_b = tk.Label(ventana, image = rey_blanco )
+rey_b.pack(side = "bottom", fill = "both", expand = "yes")
+rey_b.place(x = 450, y = 100)
+
+rey_negro = ImageTk.PhotoImage(Image.open(path + "Rnb.jpg"))
+rey_n = tk.Label(ventana, image = rey_negro )
+rey_n.pack(side = "bottom", fill = "both", expand = "yes")
+rey_n.place(x = 450, y = 500)
+
 
 ventana.mainloop()

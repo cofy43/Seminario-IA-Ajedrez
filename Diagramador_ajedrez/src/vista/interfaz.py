@@ -4,52 +4,9 @@ import tkinter as tk
 from PIL import ImageTk, Image
 import os
 
+from tablero import Tablero
+
 path = "../piezas-ajedrez/"
-class Tablero(tk.Frame):
-    def __init__(self, parent, *args, **kwargs):
-        super().__init__(parent, *args, **kwargs)
-        self.filas = 8
-        self.columnas = 8
-        self.dim_casilla = 40
-        self.color_casillas = "white"
-        self.dim_borde=0
-        self.el_tablero = tk.Canvas(
-            width=(350),
-            height=(350)
-            )
-    
-        self.el_tablero.pack()
-        self.el_tablero.place(x=189, y = 155)
-        self.fill_board()
-        self.el_tablero.bind("<Button-1>", self.on_board_click, self.resize)
-
-    def fill_board(self):
-        # vamos a pintar un tablero de 8x8
-        for r in range(self.filas):
-            for c in range(self.columnas):
-                id_casilla = (
-                    f"{r + 1:0{len(str(self.filas))}d}|"
-                    f"{c + 1:0{len(str(self.columnas))}d}")
-                x1, y1 = c * self.dim_casilla, r * self.dim_casilla
-                x2, y2 = x1 + self.dim_casilla, y1 + self.dim_casilla 
-                self.el_tablero.create_rectangle(
-                    x1, y1, x2, y2,
-                    fill=self.color_casillas,
-                    tags=id_casilla
-                    )
-
-    def on_board_click(self, event):
-        columna = (event.x - self.dim_borde) // self.dim_casilla
-        fila = (event.y - self.dim_borde) // self.dim_casilla
-        id_casilla = (
-            f"{fila + 1:0{len(str(self.filas))}d}|"
-            f"{columna + 1:0{len(str(self.columnas))}d}")
-        self.el_tablero.itemconfig(id_casilla, fill='blue')
-        print("columa: " + str(columna) + " fila: " + str(fila))
-
-    def resize(self, event):
-        w,h = event.width-100, event.height-100
-        self.c.config(width=w, height=h)
 
 OptionList = [
 "Chess Assistant",
@@ -121,64 +78,65 @@ button.place(x=400, y=60)
 alfil_blanco = ImageTk.PhotoImage(Image.open(path + "Abb.jpg"))
 alfil_b = tk.Label(ventana, image = alfil_blanco )
 alfil_b.pack(side = "bottom", fill = "both", expand = "yes")
-alfil_b.place(x = 200, y = 100)
+alfil_b.place(x = 200, y = 500)
 
 alfil_negro = ImageTk.PhotoImage(Image.open(path + "Anb.jpg"))
 alfil_n = tk.Label(ventana, image = alfil_negro )
 alfil_n.pack(side = "bottom", fill = "both", expand = "yes")
-alfil_n.place(x = 200, y = 500)
+alfil_n.place(x = 200, y = 100)
 
 caballo_blanco = ImageTk.PhotoImage(Image.open(path + "Cbb.jpg"))
 caballo_b = tk.Label(ventana, image = caballo_blanco )
 caballo_b.pack(side = "bottom", fill = "both", expand = "yes")
-caballo_b.place(x = 250, y = 100)
+caballo_b.place(x = 250, y = 500)
 
 caballo_negro = ImageTk.PhotoImage(Image.open(path + "Cnb.jpg"))
 caballo_n = tk.Label(ventana, image = caballo_negro )
 caballo_n.pack(side = "bottom", fill = "both", expand = "yes")
-caballo_n.place(x = 250, y = 500)
+caballo_n.place(x = 250, y = 100)
 
 torre_blanco = ImageTk.PhotoImage(Image.open(path + "Tbb.jpg"))
 torre_b = tk.Label(ventana, image = torre_blanco )
 torre_b.pack(side = "bottom", fill = "both", expand = "yes")
-torre_b.place(x = 300, y = 100)
+torre_b.place(x = 300, y = 500)
 
 torre_negro = ImageTk.PhotoImage(Image.open(path + "Tnb.jpg"))
 torre_n = tk.Label(ventana, image = torre_negro )
 torre_n.pack(side = "bottom", fill = "both", expand = "yes")
-torre_n.place(x = 300, y = 500)
+torre_n.place(x = 300, y = 100)
 
 peon_blanco = ImageTk.PhotoImage(Image.open(path + "Pbb.jpg"))
 peon_b = tk.Label(ventana, image = peon_blanco )
 peon_b.pack(side = "bottom", fill = "both", expand = "yes")
-peon_b.place(x = 350, y = 100)
+peon_b.place(x = 350, y = 500)
 
 peon_negro = ImageTk.PhotoImage(Image.open(path + "Pnb.jpg"))
 peon_n = tk.Label(ventana, image = peon_negro )
 peon_n.pack(side = "bottom", fill = "both", expand = "yes")
-peon_n.place(x = 350, y = 500)
+peon_n.place(x = 350, y = 100)
 
 dama_blanco = ImageTk.PhotoImage(Image.open(path + "Dbb.jpg"))
 dama_b = tk.Label(ventana, image = dama_blanco )
 dama_b.pack(side = "bottom", fill = "both", expand = "yes")
-dama_b.place(x = 400, y = 100)
+dama_b.place(x = 400, y = 500)
 
 dama_negro = ImageTk.PhotoImage(Image.open(path + "Dnb.jpg"))
 dama_n = tk.Label(ventana, image = dama_negro )
 dama_n.pack(side = "bottom", fill = "both", expand = "yes")
-dama_n.place(x = 400, y = 500)
+dama_n.place(x = 400, y = 100)
 
 rey_blanco = ImageTk.PhotoImage(Image.open(path + "Rbb.jpg"))
 rey_b = tk.Label(ventana, image = rey_blanco )
 rey_b.pack(side = "bottom", fill = "both", expand = "yes")
-rey_b.place(x = 450, y = 100)
+rey_b.place(x = 450, y = 500)
 
 rey_negro = ImageTk.PhotoImage(Image.open(path + "Rnb.jpg"))
 rey_n = tk.Label(ventana, image = rey_negro )
 rey_n.pack(side = "bottom", fill = "both", expand = "yes")
-rey_n.place(x = 450, y = 500)
+rey_n.place(x = 450, y = 100)
 
 Tablero(ventana).pack()
+
 
 
 ventana.mainloop()

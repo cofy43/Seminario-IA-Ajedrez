@@ -10,21 +10,21 @@ class Tablero(tk.Frame):
         super().__init__(parent, *args, **kwargs)
         self.filas = 8
         self.columnas = 8
-        self.dim_casilla = 64
-        self.color_casillas = "green"
+        self.dim_casilla = 40
+        self.color_casillas = "white"
         self.dim_borde=0
         self.el_tablero = tk.Canvas(
-            width=(self.filas * self.dim_casilla),
-            height=(self.columnas * self.dim_casilla)
+            width=(350),
+            height=(350)
             )
     
         self.el_tablero.pack()
-        self.el_tablero.place(x=210, y = 20)
+        self.el_tablero.place(x=189, y = 155)
         self.fill_board()
-        self.el_tablero.bind("<Button-1>", self.on_board_click)
+        self.el_tablero.bind("<Button-1>", self.on_board_click, self.resize)
 
     def fill_board(self):
-        # vamos a pintar un tablero de 16x16 rectángulos
+        # vamos a pintar un tablero de 8x8
         for r in range(self.filas):
             for c in range(self.columnas):
                 id_casilla = (
@@ -46,6 +46,10 @@ class Tablero(tk.Frame):
             f"{columna + 1:0{len(str(self.columnas))}d}")
         self.el_tablero.itemconfig(id_casilla, fill='blue')
         print("columa: " + str(columna) + " fila: " + str(fila))
+
+    def resize(self, event):
+        w,h = event.width-100, event.height-100
+        self.c.config(width=w, height=h)
 
 OptionList = [
 "Chess Assistant",

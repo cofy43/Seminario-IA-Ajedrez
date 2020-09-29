@@ -1,10 +1,14 @@
 import tkinter as tk
+from PIL import ImageTk, Image
+import os
 
 class Tablero(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.filas = 8
+        self.path = "../piezas-ajedrez/"
         self.columnas = 8
+        self.piece = ""
         self.dim_casilla = 40
         self.color_casillas = "white"
         self.dim_borde=0
@@ -33,13 +37,19 @@ class Tablero(tk.Frame):
                     tags=id_casilla
                     )
 
+    def setPiece(self, piece):
+        self.piece = piece
+        print(self.piece)
+
     def on_board_click(self, event):
-        columna = (event.x - self.dim_borde) // self.dim_casilla
-        fila = (event.y - self.dim_borde) // self.dim_casilla
-        id_casilla = (
-            f"{fila + 1:0{len(str(self.filas))}d}|"
-            f"{columna + 1:0{len(str(self.columnas))}d}")
-        self.el_tablero.itemconfig(id_casilla, fill='blue')
+        columna = ((event.x - self.dim_borde) // self.dim_casilla)
+        fila = ((event.y - self.dim_borde) // self.dim_casilla)
+        print(self.piece)
+        photo = ImageTk.PhotoImage(Image.open(self.path + self.piece))
+        self.el_tablero.photo = photo
+
+        image_id = self.el_tablero.create_image(((columna*40), (fila*40)+41), image = photo, anchor='sw')
+        self.el_tablero.itemconfigure(image_id, image=self.el_tablero.photo)
         print("columa: " + str(columna) + " fila: " + str(fila))
 
     def resize(self, event):

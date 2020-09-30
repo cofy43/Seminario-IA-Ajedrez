@@ -6,6 +6,7 @@ from tkinter import filedialog
 from tablero import Tablero
 from fonts import Fonst
 import os
+import io
 
 path = "piezas-ajedrez/"
 
@@ -37,7 +38,7 @@ def leer_partida():
 def salvar_partida():
     board = tablero.getTablero()
     #archivo = filediaglog.sksaveasfilename(title = "Guardar partida", defaultextension=".txt")
-    paht = filedialog.asksaveasfilename(title = "Guardar partida", defaultextension=".txt")
+    paht = filedialog.asksaveasfilename(title = "Guardar partida", defaultextension=".txt", filetypes=[("Text files","*.txt")])
     fonts.guarda(board, paht)
 
 def nueva_partida():
@@ -45,6 +46,12 @@ def nueva_partida():
 
 def capturar_imagen():
     print("Aqui va el codigo para capturar imagen")
+    ps = tablero.el_tablero.postscript(colormode='color')
+    img = Image.open(io.BytesIO(ps.encode('utf-8') ))
+    paht = filedialog.asksaveasfilename(title = "Guardar partida", defaultextension=".jpg", filetypes=[("Images files","*.jpg")])
+    img.save(paht, 'jpeg')
+
+
 
 def diagrama_html():
     print("Aqui va el codigo para diagrama html")

@@ -3,7 +3,6 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 from tkinter import filedialog
-from tkinter.ttk import * 
 from tablero import Tablero
 from fonts import Fonst
 import os
@@ -22,10 +21,6 @@ OptionList = [
 
 # Definición de ventana
 ventana = tk.Tk()
-style = Style()
-style.configure('W.TButton', font =
-               ('calibri', 10, 'bold', 'underline'), 
-                foreground = 'red')
 ventana.geometry("800x600")
 ventana.title("Diagrama de Ajedrez")
 tablero = Tablero(ventana)
@@ -77,10 +72,6 @@ opciones.place(x=305, y=10)
 boton3 = tk.Button(ventana, text="Nueva partida", command = nueva_partida)
 boton3.pack()
 boton3.place(x=500, y=10)
-
-boton5 = tk.Button(ventana, text="Capturar imagen", command = capturar_imagen)
-boton5.pack()
-boton5.place(x=650, y=10)
 
 button = tk.Button(ventana ,text = "Cerrar", command = ventana.destroy)
 button.pack()

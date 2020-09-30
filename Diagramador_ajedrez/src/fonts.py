@@ -2,12 +2,12 @@ class Fonst():
     def __init__(self):
         self.path = "partida_merida.txt"
         #self.font = font
-        self.merida_pieces = {"Tbb.jpg" : "R", "Tbn.jpg" : "r", "Tnb.jpg" : "t", "Tnn.jpg" : "T",
-                              "Cbb.jpg" : "N", "Cbn.jpg" : "n", "Cnb.jpg" : "M", "Cnn.jpg" : "m",
-                              "Abb.jpg" : "B", "Abn.jpg" : "b", "Anb.jpg" : "V", "Ann.jpg" : "v",
-                              "Dbb.jpg" : "Q", "Dbn.jpg" : "q", "Dnb.jpg" : "W", "Dnn.jpg" : "w",
-                              "Rbb.jpg" : "k", "Rbn.jpg" : "K", "Rnb.jpg" : "L", "Rnn.jpg" : "l",
-                              "Pbb.jpg" : "P", "Pbn.jpg" : "p", "Pnb.jpg" : "O", "Pnn.jpg" : "o",
+        self.merida_pieces = {"Tbb.jpg" : "r", "Tbn.jpg" : "R", "Tnb.jpg" : "t", "Tnn.jpg" : "T",
+                              "Cbb.jpg" : "n", "Cbn.jpg" : "N", "Cnb.jpg" : "m", "Cnn.jpg" : "M",
+                              "Abb.jpg" : "b", "Abn.jpg" : "B", "Anb.jpg" : "v", "Ann.jpg" : "V",
+                              "Dbb.jpg" : "q", "Dbn.jpg" : "Q", "Dnb.jpg" : "w", "Dnn.jpg" : "W",
+                              "Rbb.jpg" : "k", "Rbn.jpg" : "K", "Rnb.jpg" : "l", "Rnn.jpg" : "L",
+                              "Pbb.jpg" : "p", "Pbn.jpg" : "P", "Pnb.jpg" : "o", "Pnn.jpg" : "O",
                               "b.jpg" : " ", "n.jpg" : "+", "9" : "!\"\"\"\"\"\"\"\"#", 
                               "0" : "/(((((((()"}
 
@@ -28,6 +28,7 @@ class Fonst():
         file.write("\n")
         file.write(self.merida_pieces["9"])
         file.write("\n")
+        print(board)
         for r in range(8):
             row = self.vertilcal_inicial
             for c in range(8):

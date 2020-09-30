@@ -27,7 +27,6 @@ class Fonst():
         print(file)
         file.write(self.merida_pieces["9"])
         file.write("\n")
-        print(board)
         for r in range(8):
             row = self.vertilcal_inicial
             for c in range(8):
@@ -45,21 +44,25 @@ class Fonst():
         j = 0
         board = {}
         for linea in file.readlines():
-            print(i)
-            print(linea)
             if (i > -1 and i < 8):
                 for c in linea:
                     if (c == '$' or c == '%' or c == '\n' or c == '!' or c == '\"' or c == '#'):
                         print("no se lee")
                     else :
                         coordenada = "(" + str(i) + "," + str(j) + ")"
-                        print(c)
-                        piece = self.board_pieces[c]
-                        board[coordenada] = piece
-                        j = j + 1
+                        try:
+                            piece = self.board_pieces[c]
+                            board[coordenada] = piece
+                            j = j + 1
+                        except KeyError as e:
+                            board = {}
+                            return board
+                            print('I got a KeyError - reason "%s"' % str(e))
+                        except:
+                            print('I got another exception, but I should re-raise')
+                            raise
             i = i +1
             j = 0
-        print(board)
         file.close()
         return board
 

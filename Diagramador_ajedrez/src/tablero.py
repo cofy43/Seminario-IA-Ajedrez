@@ -46,7 +46,6 @@ class Tablero(tk.Frame):
 
     def setPiece(self, piece):
         self.piece = piece
-        print(self.piece)
 
     def on_board_click(self, event):
             if len(self.piece) > 0 :
@@ -55,20 +54,16 @@ class Tablero(tk.Frame):
                 coodenada = "(" + str(columna) + "," + str(fila) + ")"
 
                 if ((fila+(columna+1)) % 2 != 0) :
-                    print("fondo blanco")
                     self.piece = self.piece + "b.jpg"
                 else :
-                    print("fondo negro")
                     self.piece = self.piece + "n.jpg"
 
                 photo = ImageTk.PhotoImage(Image.open(self.path + self.piece))
-                print(photo)
                 self.pieces[coodenada] = photo
                 self.board[fila][columna] = self.piece
                 image_id = self.el_tablero.create_image(((columna*40), (fila*40)+41), image = photo, anchor='sw')
                 self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
                 self.el_tablero.photo = photo
-                print("columa: " + str(columna) + " fila: " + str(fila))
 
     def getTablero(self):
         return self.board

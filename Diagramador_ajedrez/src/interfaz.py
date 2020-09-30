@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import tkinter as tk
+from tkinter import messagebox
 from PIL import ImageTk, Image
 from tkinter import filedialog
 from tablero import Tablero
@@ -29,14 +30,16 @@ fonts = Fonst()
 #  Funciones para los botones
 
 def leer_partida():
-    print("Aqui va el codigo para cargar archivo")
     path = filedialog.askopenfilename(title="Abrir partida", initialdir="./", filetypes=[("Text files","*.txt")])
     board = fonts.lee(path)
-    tablero.setTablero(board)
+    if (not bool(board)) :
+        messagebox.showerror(title="ERROR", message="El formato del archivo no es válido, por favor validalo e intentalo de nuevo")
+    else: 
+        tablero.setTablero(board)
+
 
 def salvar_partida():
     board = tablero.getTablero()
-    #archivo = filediaglog.sksaveasfilename(title = "Guardar partida", defaultextension=".txt")
     paht = filedialog.asksaveasfilename(title = "Guardar partida", defaultextension=".txt", filetypes=[("Text files","*.txt")])
     fonts.guarda(board, paht)
 
@@ -44,7 +47,6 @@ def nueva_partida():
     tablero.fill_board()
 
 def capturar_imagen():
-    print("Aqui va el codigo para capturar imagen")
     ps = tablero.el_tablero.postscript(colormode='color')
     img = Image.open(io.BytesIO(ps.encode('utf-8') ))
     paht = filedialog.asksaveasfilename(title = "Guardar partida", defaultextension=".jpg", filetypes=[("Images files","*.jpg")])
@@ -78,9 +80,7 @@ button.pack()
 button.place(x=350, y=60)
 
 def setPiece(pice):
-    print("--- " + pice)
     tablero.setPiece(pice)
-
 
 # Definición de las piezas
 alfil_blanco = ImageTk.PhotoImage(Image.open(path + "Abb.jpg"))

@@ -57,10 +57,9 @@ class Fonst():
                         except KeyError as e:
                             board = {}
                             return board
-                            print('I got a KeyError - reason "%s"' % str(e))
                         except:
-                            print('I got another exception, but I should re-raise')
-                            raise
+                            board = {}
+                            return board
             i = i +1
             j = 0
         file.close()

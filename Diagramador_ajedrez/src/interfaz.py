@@ -75,6 +75,10 @@ boton3 = tk.Button(ventana, text="Nueva partida", command = nueva_partida)
 boton3.pack()
 boton3.place(x=500, y=10)
 
+boton5 = tk.Button(ventana, text="Capturar imagen", command = capturar_imagen)
+boton5.pack()
+boton5.place(x=650, y=10)
+
 button = tk.Button(ventana ,text = "Cerrar", command = ventana.destroy)
 button.pack()
 button.place(x=350, y=60)

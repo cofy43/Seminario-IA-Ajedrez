@@ -58,12 +58,25 @@ class Tablero(tk.Frame):
                 else :
                     self.piece = self.piece + "n.jpg"
 
-                photo = ImageTk.PhotoImage(Image.open(self.path + self.piece))
-                self.pieces[coodenada] = photo
-                self.board[fila][columna] = self.piece
-                image_id = self.el_tablero.create_image(((columna*40), (fila*40)+41), image = photo, anchor='sw')
-                self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
-                self.el_tablero.photo = photo
+                try:
+                    photo = ImageTk.PhotoImage(Image.open(self.path + self.piece))
+                    self.pieces[coodenada] = photo
+                    self.board[fila][columna] = self.piece
+                    image_id = self.el_tablero.create_image(((columna*40), (fila*40)+41), image = photo, anchor='sw')
+                except FileNotFoundError as e:
+                    return
+                except:
+                    return
+                
+                try:
+                    self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
+                    self.el_tablero.photo = photo
+                    self.piece = ""
+                except NameError as e:
+                    return
+                except:
+                    return
+                    raise
 
     def getTablero(self):
         return self.board

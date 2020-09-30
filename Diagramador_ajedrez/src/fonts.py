@@ -11,12 +11,12 @@ class Fonst():
                               "b.jpg" : " ", "n.jpg" : "+", "9" : "!\"\"\"\"\"\"\"\"#", 
                               "0" : "/(((((((()"}
 
-        self.board_pieces = {"R" : "Tbb.jpg", "r" : "Tbn.jpg", "t" : "Tnb.jpg", "T" : "Tnn.jpg",
-                             "N" : "Cbb.jpg", "n" : "Cbn.jpg", "M" : "Cnb.jpg", "m" : "Cnn.jpg",
-                             "B" : "Abb.jpg", "b" : "Abn.jpg", "V" : "Anb.jpg", "v" : "Ann.jpg",
-                             "Q" : "Dbb.jpg", "q" : "Dbn.jpg", "W" : "Dnb.jpg", "w" : "Dnn.jpg",
-                             "k" : "Rbb.jpg", "K" : "Rbn.jpg", "L" : "Rnb.jpg", "l" : "Rnn.jpg",
-                             "P" : "Pbb.jpg", "p" : "Pbn.jpg", "O" : "Pnb.jpg", "o" : "Pnn.jpg",
+        self.board_pieces = {"r" : "Tbb.jpg", "R" : "Tbn.jpg", "t" : "Tnb.jpg", "T" : "Tnn.jpg",
+                             "n" : "Cbb.jpg", "N" : "Cbn.jpg", "m" : "Cnb.jpg", "M" : "Cnn.jpg",
+                             "b" : "Abb.jpg", "B" : "Abn.jpg", "v" : "Anb.jpg", "V" : "Ann.jpg",
+                             "q" : "Dbb.jpg", "Q" : "Dbn.jpg", "w" : "Dnb.jpg", "W" : "Dnn.jpg",
+                             "k" : "Rbb.jpg", "K" : "Rbn.jpg", "l" : "Rnb.jpg", "L" : "Rnn.jpg",
+                             "p" : "Pbb.jpg", "P" : "Pbn.jpg", "o" : "Pnb.jpg", "O" : "Pnn.jpg",
                              " " : "b.jpg", "+" : "n.jpg"}
 
         self.vertilcal_inicial = "$"
@@ -25,7 +25,6 @@ class Fonst():
     def guarda(self, board, path):
         file = open(path, "w")
         print(file)
-        file.write("\n")
         file.write(self.merida_pieces["9"])
         file.write("\n")
         print(board)

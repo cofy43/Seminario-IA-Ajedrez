@@ -3,6 +3,7 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 from tkinter import filedialog
+from tkinter.ttk import * 
 from tablero import Tablero
 from fonts import Fonst
 import os
@@ -21,7 +22,10 @@ OptionList = [
 
 # Definición de ventana
 ventana = tk.Tk()
-
+style = Style()
+style.configure('W.TButton', font =
+               ('calibri', 10, 'bold', 'underline'), 
+                foreground = 'red')
 ventana.geometry("800x600")
 ventana.title("Diagrama de Ajedrez")
 tablero = Tablero(ventana)
@@ -52,11 +56,6 @@ def capturar_imagen():
     img.save(paht, 'jpeg')
 
 
-
-def diagrama_html():
-    print("Aqui va el codigo para diagrama html")
-
-
 # Definiciones de botones
 
 boton1 = tk.Button(ventana, text="Leer partida", command = leer_partida)
@@ -83,13 +82,9 @@ boton5 = tk.Button(ventana, text="Capturar imagen", command = capturar_imagen)
 boton5.pack()
 boton5.place(x=650, y=10)
 
-boton6 = tk.Button(ventana, text="Diagrama html", command = diagrama_html)
-boton6.pack()
-boton6.place(x=250, y=60)
-
 button = tk.Button(ventana ,text = "Cerrar", command = ventana.destroy)
 button.pack()
-button.place(x=400, y=60)
+button.place(x=350, y=60)
 
 def setPiece(pice):
     print("--- " + pice)

@@ -38,7 +38,7 @@ class Tablero(tk.Frame):
                     coordenada = "(" + str(c) + "," + str(r) + ")"
                     temp = "n.jpg"
 
-                photo = ImageTk.PhotoImage(Image.open(self.path + temp))
+                photo = ImageTk.PhotoImage(Image.open(os.path.join(self.path,temp)))
                 self.pieces[coordenada] = photo
                 self.board[r][c] = temp
                 image_id = self.el_tablero.create_image(((c*40), (r*40)+41), image = photo, anchor='sw')
@@ -66,16 +66,28 @@ class Tablero(tk.Frame):
                 self.pieces[coodenada] = photo
                 self.board[fila][columna] = self.piece
                 image_id = self.el_tablero.create_image(((columna*40), (fila*40)+41), image = photo, anchor='sw')
-                if coodenada:
-                    self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
-                    self.el_tablero.photo = photo
-
+                self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
+                self.el_tablero.photo = photo
                 print("columa: " + str(columna) + " fila: " + str(fila))
 
     def getTablero(self):
         return self.board
 
-    
+    def getCoordenadaX(self, coordenada):
+        return int(coordenada[1])
+
+    def getCoordenadaY(self, coordenada):
+        return int(coordenada[3])
+
+    def setTablero(self, board):
+        for coordenada, piece in board.items():
+            x = self.getCoordenadaX(coordenada)
+            y = self.getCoordenadaY(coordenada)
+            photo = ImageTk.PhotoImage(Image.open(self.path + piece))
+            self.pieces[coordenada] = photo
+            self.board[x][y] = piece
+            image_id = self.el_tablero.create_image(((y*40), (x*40)+41), image = photo, anchor='sw')
+            self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
 
     def resize(self, event):
         w,h = event.width-100, event.height-100

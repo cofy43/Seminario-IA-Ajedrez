@@ -30,18 +30,17 @@ fonts = Fonst()
 
 def leer_partida():
     print("Aqui va el codigo para cargar archivo")
+    path = filedialog.askopenfilename(title="Abrir partida", initialdir="./", filetypes=[("Text files","*.txt")])
+    board = fonts.lee(path)
+    tablero.setTablero(board)
 
 def salvar_partida():
-    print("Aqui va el codigo para salvar archivo")
     board = tablero.getTablero()
     #archivo = filediaglog.sksaveasfilename(title = "Guardar partida", defaultextension=".txt")
     paht = filedialog.asksaveasfilename(title = "Guardar partida", defaultextension=".txt")
-    if paht != "":
-        os.chdir(path)
     fonts.guarda(board, paht)
 
 def nueva_partida():
-    print("Aqui va el codigo para crear una nueva partida")
     tablero.fill_board()
 
 def capturar_imagen():

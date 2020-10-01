@@ -24,7 +24,6 @@ class Fonst():
 
     def guarda(self, board, path):
         file = open(path, "w")
-        print(file)
         file.write(self.merida_pieces["9"])
         file.write("\n")
         for r in range(8):
@@ -46,9 +45,7 @@ class Fonst():
         for linea in file.readlines():
             if (i > -1 and i < 8):
                 for c in linea:
-                    if (c == '$' or c == '%' or c == '\n' or c == '!' or c == '\"' or c == '#'):
-                        print("no se lee")
-                    else :
+                    if (c != '$' and c != '%' and c != '\n' and c != '!' and c != '\"' and c != '#'):
                         coordenada = "(" + str(i) + "," + str(j) + ")"
                         try:
                             piece = self.board_pieces[c]
@@ -64,7 +61,3 @@ class Fonst():
             j = 0
         file.close()
         return board
-
-    #for name, age in mydict.items():
-    #   if age == search_age:
-    #       print name

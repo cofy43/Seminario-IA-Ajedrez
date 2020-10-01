@@ -13,14 +13,14 @@ class Tablero(tk.Frame):
         self.color_casillas = "white"
         self.dim_borde=0
         self.el_tablero = tk.Canvas(
-            width=(350),
-            height=(350)
+            width=(320),
+            height=(320)
             )
         self.esBlanco = True
         self.pieces = {}
         self.board = [[0]*8 for i in range(8)]
         self.el_tablero.pack()
-        self.el_tablero.place(x=189, y = 155)
+        self.el_tablero.place(x=83, y = 142)
         self.fill_board()
         self.el_tablero.bind("<Button-1>", self.on_board_click, self.resize)
 
@@ -52,11 +52,17 @@ class Tablero(tk.Frame):
                 columna = ((event.x - self.dim_borde) // self.dim_casilla)
                 fila = ((event.y - self.dim_borde) // self.dim_casilla)
                 coodenada = "(" + str(columna) + "," + str(fila) + ")"
-
+                
                 if ((fila+(columna+1)) % 2 != 0) :
-                    self.piece = self.piece + "b.jpg"
+                    if (self.piece == "trash") :
+                        self.piece = "b.jpg"
+                    else:
+                        self.piece = self.piece + "b.jpg"
                 else :
-                    self.piece = self.piece + "n.jpg"
+                    if (self.piece == "trash") :
+                        self.piece = "n.jpg"
+                    else: 
+                        self.piece = self.piece + "n.jpg"
 
                 try:
                     photo = ImageTk.PhotoImage(Image.open(self.path + self.piece))

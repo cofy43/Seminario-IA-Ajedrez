@@ -9,12 +9,12 @@ con la fuente TrueType CHESS MERIDA
 Se requiere la biblioteca  [tkinter] para instalar en Linux:.
 
 ```bash
-pip3 install tk
+sudo apt-get install python3-tk
 ```
 Se requiere la biblioteca  [image](https://pypi.org/project/image/) para instalar en Linux:.
 
 ```bash
-pip3 install image
+sudo apt-get install python3-pil python3-pil.imagetk
 ```
 
 Se requiere la biblioteca  [Pillow](https://pypi.org/project/Pillow/2.2.2/) para instalar en Linux:.

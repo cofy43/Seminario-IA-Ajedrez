@@ -6,15 +6,15 @@ con la fuente TrueType CHESS MERIDA
 
 ## Requisitos
 
-Se requiere la biblioteca  [pip](https://pypi.org/project/tkintertable/) para instalar en Linux:.
+Se requiere la biblioteca  [tkinter] para instalar en Linux:.
 
 ```bash
-pip install tkintertable
+pip install tk
 ```
 o 
 
 ```bash
-pip3 install tkintertable
+pip3 install tk
 ```
 Se requiere la biblioteca  [image](https://pypi.org/project/image/) para instalar en Linux:.
 
@@ -28,7 +28,7 @@ o
 pip3 install image
 ```
 
-Se requiere la biblioteca  [pip](https://pypi.org/project/Pillow/2.2.2/) para instalar en Linux:.
+Se requiere la biblioteca  [Pillow](https://pypi.org/project/Pillow/2.2.2/) para instalar en Linux:.
 
 ```bash
 pip install Pillow
@@ -38,7 +38,7 @@ o
 ```bash
 pip3 install Pillow
 ```
-Se requiere la biblioteca  [pip](https://pypi.org/project/tkfilebrowser/) para instalar en Linux:.
+Se requiere la biblioteca  [tkfilebrowser](https://pypi.org/project/tkfilebrowser/) para instalar en Linux:.
 
 ```bash
 pip install tkfilebrowser
@@ -51,14 +51,11 @@ pip3 install tkfilebrowser
 
 ## Para ejecutar
 
-en la carpeta Diagramador
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+en la carpeta Diagramador/src ejecutar python3 interfaz.py
 
 ![Alt text](ejecucion.png?raw=true "Title") 
+```bash
+python3 interfaz.py
+```
+
+

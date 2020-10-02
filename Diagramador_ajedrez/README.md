@@ -9,20 +9,9 @@ con la fuente TrueType CHESS MERIDA
 Se requiere la biblioteca  [tkinter] para instalar en Linux:.
 
 ```bash
-pip install tk
-```
-o 
-
-```bash
 pip3 install tk
 ```
 Se requiere la biblioteca  [image](https://pypi.org/project/image/) para instalar en Linux:.
-
-```bash
-pip install image
-```
-
-o 
 
 ```bash
 pip3 install image
@@ -31,22 +20,18 @@ pip3 install image
 Se requiere la biblioteca  [Pillow](https://pypi.org/project/Pillow/2.2.2/) para instalar en Linux:.
 
 ```bash
-pip install Pillow
-```
-o 
-
-```bash
 pip3 install Pillow
 ```
 Se requiere la biblioteca  [tkfilebrowser](https://pypi.org/project/tkfilebrowser/) para instalar en Linux:.
 
 ```bash
-pip install tkfilebrowser
+pip3 install tkfilebrowser
 ```
-o 
+
+Se requiere la biblioteca [image](https://pypi.org/project/image/) para instalar en Linux:
 
 ```bash
-pip3 install tkfilebrowser
+pip3 install image
 ```
 
 ## Para ejecutar

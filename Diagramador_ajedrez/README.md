@@ -28,12 +28,6 @@ Se requiere la biblioteca  [tkfilebrowser](https://pypi.org/project/tkfilebrowse
 pip3 install tkfilebrowser
 ```
 
-Se requiere la biblioteca [image](https://pypi.org/project/image/) para instalar en Linux:
-
-```bash
-pip3 install image
-```
-
 ## Para ejecutar
 
 en la carpeta Diagramador/src ejecutar python3 interfaz.py

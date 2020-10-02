@@ -16,6 +16,17 @@ o
 ```bash
 pip3 install tkintertable
 ```
+Se requiere la biblioteca  [image](https://pypi.org/project/image/) para instalar en Linux:.
+
+```bash
+pip install image
+```
+
+o 
+
+```bash
+pip3 install image
+```
 
 Se requiere la biblioteca  [pip](https://pypi.org/project/Pillow/2.2.2/) para instalar en Linux:.
 
@@ -40,10 +51,14 @@ pip3 install tkfilebrowser
 
 ## Para ejecutar
 
-Abrimos una terminal en el directorio "Diagramador_ajedrez"
-posteriormente nos dirigimos a la carpeta "src"
-finalmete ejecutamos el comando
+en la carpeta Diagramador
 
-```bash
-python3 interfaz.py
+```python
+import foobar
+
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
 ```
+
+![Alt text](ejecucion.png?raw=true "Title") 

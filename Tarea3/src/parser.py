@@ -53,8 +53,8 @@ class Parser():
                 self.games.append(game)
                 game = []
 
-        for j in self.games:
-            print(j, "\n\n\n")
+        #for j in self.games:
+            #print(j, "\n\n\n")
 
 
 if __name__ == "__main__":

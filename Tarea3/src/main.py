@@ -9,6 +9,7 @@ from tkinter import filedialog
 from parser import Parser
 from table import Table
 from game import Game
+from tablero import Tablero
 
 
 class Principal():
@@ -32,6 +33,7 @@ class Principal():
 
     def leer_partida(self):
         self.tabla = None
+        self.list_game = []
         try:
             path = filedialog.askopenfilename(title="Abrir partida", initialdir="./", filetypes=[("Text files","*.pgn"), ("All file", "*.*")])
             self.parser = Parser(path)
@@ -40,10 +42,8 @@ class Principal():
                 self.list_game.append(game)
             self.crea_tabla()
         except FileNotFoundError as e:
-            print("error:", e)
             messagebox.showerror(title="ERROR", message="No se encontró el archivo, por favor validalo e intentalo de nuevo")
         except TypeError as e:
-            print("error:", e)
             messagebox.showerror(title="ERROR", message="El formato del archivo no es válido o no se seleccionó uno, por favor validalo e intentalo de nuevo")
 
     def crea_tabla(self):
@@ -53,7 +53,7 @@ class Principal():
         headers = (u"Event",   u"Site", u"Date", u"Round", u"White",   u"Black", u"Result" )
 
         title_table = 'Número de partidas encontradas: {:d}'.format(self.parser.n_games)
-        self.tabla = Table(t3, title=title_table, headers=headers)
+        self.tabla = Table(t3, title=title_table, headers=headers, list_game=self.parser.games, ventana=self.ventana)
         self.tabla.pack()
 
         cursor = []
@@ -64,10 +64,8 @@ class Principal():
             cursor.append(temp)
             temp = []
 
-        print(cursor)
         for row in cursor:   
             self.tabla.add_row(row)
-
 
 if __name__ == "__main__":
     juego  = Principal()

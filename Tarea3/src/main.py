@@ -53,7 +53,7 @@ class Principal():
         headers = (u"Event",   u"Site", u"Date", u"Round", u"White",   u"Black", u"Result" )
 
         title_table = 'Número de partidas encontradas: {:d}'.format(self.parser.n_games)
-        self.tabla = Table(t3, title=title_table, headers=headers, list_game=self.parser.games, ventana=self.ventana)
+        self.tabla = Table(t3, title=title_table, headers=headers, list_game=self.list_game, ventana=self.ventana)
         self.tabla.pack()
 
         cursor = []

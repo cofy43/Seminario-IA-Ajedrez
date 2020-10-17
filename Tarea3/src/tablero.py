@@ -28,7 +28,7 @@ class Tablero(tk.Frame):
         self.id_pieces = []
         self.board = [[0]*8 for i in range(8)]
         self.el_tablero.pack()
-        self.el_tablero.place(x=83, y = 142)
+        self.el_tablero.place(x=20, y = 20)
         self.fill_board()
         self.el_tablero.bind("<Button-1>", self.on_board_click, self.resize)
         self.el_tablero.bind("<ButtonPress-3>",self.boton_presion)

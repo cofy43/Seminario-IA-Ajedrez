@@ -6,21 +6,21 @@
 [Black "ChessGenius 3"]
 [Result "0-1"]
 
-1. c2c4 { Comments by/Kommentare von: GM Gerald Hertneck } 1... c7c6 2.
-d2d4 d7d5 3. Ng1f3 Ng8f6 4. Qd1c2 d5c4 5. Qc2c4 Bc8f5 6. Nb1c3 Nb8d7 7.
-g2g3 e7e6 8. Bf1g2 Bf8e7 9. e1g1 e8g8 10. e2e3 Nf6e4 11. Qc4e2 Qd8b6 12.
-Rf1d1 Ra8d8 13. Nf3e1 Nd7f6 14. Nc3e4 Nf6e4 $6 15. f2f3 Ne4d6 16. a2a4 $6
-Qb6b3 $2 17. e3e4 Bf5g6 18. Rd1d3 Qb3b4 19. b2b3 Nd6c8 $1 20. Ne1c2 Qb4b6
-21. Bc1f4 $2 c6c5 $10 22. Bf4e3 c5d4 23. Nc2d4 Be7c5 24. Ra1d1 e6e5 25.
-Nd4c2 Rd8d3 26. Qe2d3 Nc8e7 27. b3b4 $6 Bc5e3+ 28. Qd3e3 Rf8d8 $1 29.
-Rd1d8+ Qb6d8 30. Bg2f1 b7b6 31. Qe3c3 f7f6 32. Bf1c4+ Bg6f7 33. Nc2e3 Qd8d4
-34. Bc4f7+ Kg8f7 35. Qc3b3+ $2 Kf7f8 36. Kg1g2 $2 Qd4d2+ 37. Kg2h3 Qd2e2 $1
-38. Ne3g2 h7h5 $1 { � g5-g4 } 39. Qb3e3 Qe2c4 40. Qe3d2 $2 Qc4e6+ 41. g3g4
-h5g4+ 42. f3g4 Qe6c4 43. Qd2e1 Qc4b3+ 44. Ng2e3 Qb3d3 $1 45. Kh3g3 Qd3e4
-46. Qe1d2 Qe4f4+ 47. Kg3g2 Qf4d4 48. Qd2d4 e5d4 49. Ne3c4 $2 Ne7c6 50. b4b5
-Nc6e5 51. Nc4d6 d4d3 52. Kg2f2 Ne5g4+ 53. Kf2e1 Ng4h2 54. Ke1d2 Nh2f3+ 55.
-Kd2d3 Kf8e7 $1 56. Nd6f5+ Ke7f7 57. Kd3e4 Nf3d2+ 58. Ke4d5 g7g5 59. Nf5d6+
-Kf7g6 60. Kd5d4 Nd2b3+ 0-1
+1. c2 c4 { Comments by/Kommentare von: GM Gerald Hertneck } 1... c7 c6 2.
+d2 d4 d7 d5 3. Ng1 f3 Ng8 f6 4. Qd1 c2 d5 c4 5. Qc 2c4 Bc8 f5 6. Nb1 c3 Nb8 d7 7.
+g2 g3 e7 e6 8. Bf1 g2 Bf8 e7 9. e1 g1 e8 g8 10. e2 e3 Nf6 e4 11. Qc4 e2 Qd8 b6 12.
+Rf1 d1 Ra8 d8 13. Nf3 e1 Nd7 f6 14. Nc3 e4 Nf6 e4 $6 15. f2 f3 Ne4 d6 16. a2 a4 $6
+Qb6 b3 $2 17. e3 e4 Bf5 g6 18. Rd1 d3 Qb3 b4 19. b2 b3 Nd6 c8 $1 20. Ne1 c2 Qb4 b6
+21. Bc1 f4 $2 c6 c5 $10 22. Bf4 e3 c5 d4 23. Nc2 d4 Be7 c5 24. Ra1 d1 e6 e5 25.
+Nd4 c2 Rd8 d3 26. Qe2 d3 Nc8 e7 27. b3 b4 $6 Bc5 e3+ 28. Qd3 e3 Rf8 d8 $1 29.
+Rd1 d8+ Qb6 d8 30. Bg2 f1 b7b6 31. Qe3 c3 f7 f6 32. Bf1 c4+ Bg6 f7 33. Nc2 e3 Qd8 d4
+34. Bc4 f7+ Kg8 f7 35. Qc3 b3+ $2 Kf7 f8 36. Kg1 g2 $2 Qd4 d2+ 37. Kg2 h3 Qd2 e2 $1
+38. Ne3 g2 h7 h5 $1 { � g5-g4 } 39. Qb3 e3 Qe2 c4 40. Qe3 d2 $2 Qc4 e6+ 41. g3 g4
+h5 g4+ 42. f3 g4 Qe6 c4 43. Qd2 e1 Qc4 b3+ 44. Ng2 e3 Qb3 d3 $1 45. Kh3 g3 Qd3 e4
+46. Qe1 d2 Qe4 f4+ 47. Kg3 g2 Qf4 d4 48. Qd2 d4 e5 d4 49. Ne3 c4 $2 Ne7 c6 50. b4 b5
+Nc6 e5 51. Nc4 d6 d4 d3 52. Kg2 f2 Ne5 g4+ 53. Kf2 e1 Ng4 h2 54. Ke1 d2 Nh2 f3+ 55.
+Kd2 d3 Kf8 e7 $1 56. Nd6 f5+ Ke7 f7 57. Kd3 e4 Nf3 d2+ 58. Ke4 d5 g7 g5 59. Nf5 d6+
+Kf7 g6 60. Kd5 d4 Nd2 b3+ 0-1
 
 [Event "London Intel GP 25' (2)"]
 [Site "?"]

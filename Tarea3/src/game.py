@@ -23,7 +23,8 @@ class Game():
             if item.startswith("["):
                 self.set_header(item)
             else:
-                self.moves.append(item)
+                if not item[0].isdigit():
+                    self.moves.append(item)
                 self.text_game += item + " "
 
 

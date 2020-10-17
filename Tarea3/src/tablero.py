@@ -3,13 +3,14 @@ from PIL import ImageTk, Image
 import os
 
 class Tablero(tk.Frame):
-    def __init__(self, parent, *args, **kwargs):
+    def __init__(self, parent, moves=[], *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.filas = 8
         self.path = "piezas-ajedrez/"
         self.parent = parent
         self.columnas = 8
         self.images = []
+        self.moves = moves
         self.arrows = {}
         self.num_arrows = 0
         self.rectangles = []
@@ -25,6 +26,7 @@ class Tablero(tk.Frame):
             height=(320)
             )
         self.pieces = {}
+        self.piezas = {}
         self.id_pieces = []
         self.board = [[0]*8 for i in range(8)]
         self.el_tablero.pack()
@@ -34,8 +36,11 @@ class Tablero(tk.Frame):
         self.el_tablero.bind("<ButtonPress-3>",self.boton_presion)
         self.el_tablero.bind("<ButtonRelease-3>",self.boton_soltar)
         self.el_tablero.bind('<Shift-Button-1>', self.key)
+        print(self.piezas)
 
         self.presionado=False
+        self.pieza = {"K":"R", "Q":"D", "R":"T", "B":"A", "N":"C", "P":"P"}
+        self.columna = { "a":"0", "b":"1", "c":"2", "d":"3", "e":"4", "f":"5", "g":"6", "h":"7"} 
 
     def key(self,event):
         if self.color != 'none':
@@ -50,12 +55,12 @@ class Tablero(tk.Frame):
         temp = ""
         is_piece = False
         is_peon = False
+        piece = ""
         for r in range(self.filas):
             for c in range(self.columnas):
 
                 if (r == 0 or r == 1) :
                     temp += "n"
-                    print("octaba o septima fila")
                     if (r == 0):
                         is_piece = True
                         is_peon = False 
@@ -64,7 +69,6 @@ class Tablero(tk.Frame):
                         is_piece = False
 
                 elif r == 7 or r == 6:
-                    print("primera o segunda fila")
                     temp += "b"
                     if (r == 7):
                         is_piece = True
@@ -74,55 +78,49 @@ class Tablero(tk.Frame):
                         is_piece = False
 
                 elif r > 1 and r < 6:
-                    print("en blanco")
                     is_piece = False
                     is_peon = False
 
 
                 #Se crean los peones
                 if (is_peon) :
-                    print("entra en is peon")
-                    print("r = " + str(r))
-                    print("c = " + str(c))
                     temp = "P" + temp
-                    print("Temp = " + temp)
+                    piece = "P"
 
                 elif (is_piece):
-                    print("entra en is pices")
-                    print("r = " + str(r))
-                    print("c = " + str(c))
                     #Se crean las piezas de acuerdo a la columna
                     if (c == 0 or c == 7) and is_piece:
                         temp = "T" + temp
-                        print("Temp = " + temp)
+                        piece = "T"
                     if (c == 1 or c == 6) and is_piece:
                         temp = "C" + temp
-                        print("Temp = " + temp)
+                        piece = "C"
                     if (c == 2 or c == 5) and is_piece:
                         temp = "A" + temp
-                        print("Temp = " + temp)
+                        piece = "A"
                     if (c == 3) and is_piece:
                         temp = "D" + temp
-                        print("Temp = " + temp)
+                        piece = "D"
                     if (c == 4) and is_piece:
                         temp = "R" + temp
-                        print("Temp = " + temp)
+                        piece = "R"
 
                 if ((r+(c+1)) % 2 != 0) :
-                    coordenada = "(" + str(c) + "," + str(r) + ")"
                     temp = temp + "b.jpg"
                 else :
-                    coordenada = "(" + str(c) + "," + str(r) + ")"
                     temp = temp + "n.jpg"
 
-                print("en la coordenada: " + str(c) + " " + str(r) + "temp = " + temp)
+                coordenada = "(" + str(c) + "," + str(r) + ")"
+
                 photo = ImageTk.PhotoImage(Image.open(os.path.join(self.path,temp)))
                 self.pieces[coordenada] = photo
+                self.piezas[coordenada] = piece
                 self.board[r][c] = temp
                 image_id = self.el_tablero.create_image(((c*40), (r*40)+41), image = photo, anchor='sw')
                 self.id_pieces.append(image_id)
                 self.el_tablero.itemconfigure(image_id, image=self.pieces[coordenada])
                 temp = ""
+                piece = ""
 
     def setPiece(self, piece):
         self.piece = piece
@@ -165,6 +163,7 @@ class Tablero(tk.Frame):
         try:
             photo = ImageTk.PhotoImage(Image.open(self.path + self.piece))
             self.pieces[coodenada] = photo
+            self.piezas[coodenada] = piece
             self.board[fila][columna] = self.piece
             self.id_pieces.append(photo)
             image_id = self.el_tablero.create_image(((columna*40), (fila*40)+41), image = photo, anchor='sw')
@@ -232,3 +231,34 @@ class Tablero(tk.Frame):
         self.presionado=True
         self.origenx=evento.x
         self.origeny=evento.y
+
+    def move_pice(self, i):
+        print(self.moves[i])
+        move = self.moves[i]
+        coordenada = ""
+        is_peon = False
+
+        if move.find("O") > 0:
+            print("falta enrroque")
+        else:
+
+            if len(move) >= 3:
+                print(move[1], move[2])
+                coordenada = self.construye_coordenada(move[1], move[2])
+                
+            else:
+                is_peon = True
+                print(move[0], move[1])
+                coordenada = self.construye_coordenada(move[0], move[1])
+
+            print(coordenada)
+            if (self.piezas[coordenada] != ""):
+                if is_peon:
+                    self.piece = "P"
+                else: 
+                    self.piece = self.pieza[move[0]] 
+                self.crea_pieza(coordenada[1],coordenada[3])
+
+
+    def construye_coordenada(self, c, f):
+        return "(" + self.columna[c] + "," + str(f) + ")"        

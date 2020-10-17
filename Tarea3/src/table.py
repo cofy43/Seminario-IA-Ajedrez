@@ -17,6 +17,7 @@ class Table(tk.Frame):
                                   columns=self._headers, 
                                   show="headings")
         self._title.pack(side=tk.TOP, fill="x")
+        self.num_jugada = -1
 
         # Agregamos dos scrollbars 
         vsb = ttk.Scrollbar(self, orient="vertical", command=self._tree.yview)
@@ -50,9 +51,57 @@ class Table(tk.Frame):
         titulo = self._tree.item(self._tree.selection())['values'][4] + " vs " + self._tree.item(self._tree.selection())['values'][5]
         crea_tablero =  messagebox.askyesno(message="¿Desea visualizar la partida?", title="Crear tablero")
         if crea_tablero : 
-            newWindow = tk.Toplevel(self.ventana)
-            newWindow.geometry("650x600")
-            newWindow.title(titulo)
-            self.tablero = Tablero(newWindow)
-            self.tablero.pack()
-            self.tablero.place(x=70, y = 70)
+            self.crea_tablero(i, titulo)
+
+    def move(self, is_next):
+        print("move")
+        if (is_next):
+            if self.num_jugada+1 < len(self.tablero.moves):
+                self.num_jugada +=1
+            else:
+                print("ocurrio un error al hacer la siguiente jugada")
+        else:
+            if self.num_jugada-1 >= 0:
+                self.num_jugada -=1
+            else:
+                print("ocurrio un error al hacer la anterior jugada")
+
+        self.tablero.move_pice(self.num_jugada)
+    
+    def crea_tablero(self, i, titulo):
+        newWindow = tk.Toplevel(self.ventana)
+        newWindow.geometry("650x420")
+        newWindow.title(titulo)
+        moves = self.list_game[i].moves
+
+        next_move = tk.Button(newWindow, text="Adelante", command = lambda:self.move(True))
+        next_move.pack()
+        next_move.place(x=180, y=360)
+
+        back_move = tk.Button(newWindow, text="Atras", command = lambda:self.move(False))
+        back_move.pack()
+        back_move.place(x=50, y=360)
+
+        list = tk.Listbox(newWindow, width=18, height=20)
+        jugada = ""
+        j = 0
+        result = self.list_game[i].header['result']
+        i = 1
+        leng = len(moves)
+
+        for j in range(0, leng, 2):
+            if (j <= leng):
+                jugada += str(i) + ". " + moves[j]
+            if (j+1 < leng):
+                jugada += " " + moves[j+1]
+        
+            list.insert(tk.END, jugada)
+            jugada = ""
+            i += 1
+
+        self.tablero = Tablero(newWindow, moves)
+        self.tablero.pack()
+        self.tablero.place(x=10, y=10)
+            
+        list.pack()
+        list.place(x=460, y=10)

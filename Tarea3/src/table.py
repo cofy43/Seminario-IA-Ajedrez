@@ -1,11 +1,17 @@
 import tkinter as tk
 import tkinter.font as tkFont
 from tkinter import ttk
+from tkinter import messagebox
+
+from tablero import Tablero
+
 class Table(tk.Frame):
-    def __init__(self, parent=None, title="", headers=[], height=10, *args, **kwargs):
+    def __init__(self, parent=None, title="", headers=[], list_game=[], ventana=None,height=10, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self._title = tk.Label(self, text=title, background="#9086ba", font=("Helvetica", 16))
         self._headers = headers
+        self.list_game = list_game
+        self.ventana = ventana
         self._tree = ttk.Treeview(self,
                                   height=height,
                                   columns=self._headers, 
@@ -39,6 +45,14 @@ class Table(tk.Frame):
 
     def OnDoubleClick(self, event):
         item = self._tree.identify('item',event.x,event.y)
-        print("you clicked on", self._tree.item(self._tree.selection()))
-
-    
+        print(self._tree.item(self._tree.selection()))
+        i = self._tree.item(self._tree.selection())['tags'][0]
+        titulo = self._tree.item(self._tree.selection())['values'][4] + " vs " + self._tree.item(self._tree.selection())['values'][5]
+        crea_tablero =  messagebox.askyesno(message="¿Desea visualizar la partida?", title="Crear tablero")
+        if crea_tablero : 
+            newWindow = tk.Toplevel(self.ventana)
+            newWindow.geometry("650x600")
+            newWindow.title(titulo)
+            self.tablero = Tablero(newWindow)
+            self.tablero.pack()
+            self.tablero.place(x=70, y = 70)

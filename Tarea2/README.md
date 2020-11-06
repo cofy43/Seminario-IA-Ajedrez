@@ -57,4 +57,4 @@ Python3
 
 ## Autor ✒️
 
-* **Martin Felipe Espinal Cruces** - ** - [villanuevand](https://https://github.com/cofy43)
+* **Martin Felipe Espinal Cruces** - ** 

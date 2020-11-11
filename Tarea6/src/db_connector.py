@@ -10,17 +10,13 @@ class Db_connector():
                                      password = self.password, 
                                      db ="chess_card") 
         self.cursor = self.db.cursor()
+        self.list_data = []
 
     def connect(self):
         savequery = "select * from tarjetas"
         try: 
             self.cursor.execute(savequery) 
-            myresult = self.cursor.fetchall()       
-            # Printing the result of the 
-            # query 
-            for x in myresult: 
-                print(x) 
-            print("Query Excecuted successfully") 
+            self.list_data = self.cursor.fetchall()
         except: 
             self.db.rollback() 
             print("Error occured")

@@ -11,12 +11,27 @@ class Db_connector():
                                      db ="chess_card") 
         self.cursor = self.db.cursor()
         self.list_data = []
+        self.insert = "INSERT INTO `chess_card`.`tarjetas` (`id`, `nombre_tarjeta`, `tarjeta`, `posicion`, `temal`) VALUES ('%s', '%s', '%s', '%s', '%s');"
 
     def connect(self):
         savequery = "select * from tarjetas"
         try: 
             self.cursor.execute(savequery) 
             self.list_data = self.cursor.fetchall()
-        except: 
+        except mysql.connector.Error as error:
+            print("Failed to insert into MySQL table {}".format(error))
             self.db.rollback() 
-            print("Error occured")
+        
+    def insertar(self, id, nombre, tajera, posicion, tema):
+        #def insert(self, id, nombre, tajera, posicion, tema):
+        print(self.list_data)
+        try: 
+            command = self.insert % (id, nombre, tajera, tema, posicion)
+            print("comnad: " + command)
+            self.cursor.execute(command)
+            self.db.commit()
+            self.connect()
+            return True
+        except mysql.connector.Error as error:
+            print("Failed to insert into MySQL table {}".format(error))
+            self.db.rollback() 

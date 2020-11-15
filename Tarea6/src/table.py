@@ -6,7 +6,7 @@ from tkinter import messagebox
 class Table(tk.Frame):
     def __init__(self, parent=None, title="", headers=[], list_game=[], ventana=None,height=10, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
-        self._title = tk.Label(self, text=title, background="#64d8cb", font=("Helvetica", 16), width=570, fg='black')
+        self._title = tk.Label(self, text=title, background="#718792", font=("Helvetica", 16), width=570, fg='black')
         self._headers = headers
         self.list_game = list_game
         self.ventana = ventana

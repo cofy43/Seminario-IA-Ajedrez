@@ -24,13 +24,18 @@ class Principal():
 
         self.nombre = tk.Label(self.ventana, text='Nombre: ', bg='#26a69a', fg="black")
         self.nombre.place(x =30, y=20)
+        self.nombre_value = tk.Label(self.ventana, text='--', bg='#26a69a', fg="black")
+        self.nombre_value.place(x =100, y=20)
         self.tema = tk.Label(self.ventana, text='Tema: ', bg='#26a69a', fg="black")
+        self.tema.place(x =30, y=100)
+        self.tema_value = tk.Label(self.ventana, text='--', bg='#26a69a', fg="black")
+        self.tema_value.place(x =85, y=100)
+
         self.tajeta = tk.Text(self.ventana, width=40, height=18)
         self.tajeta.place(x=30, y=150)
         self.font = tkFont.Font(family="Chess Cases", size=23)
         self.posicion = tk.Text(self.ventana, width=16, height=9.5, font=self.font)
         self.posicion.place(x=380, y=150)
-        self.tema.place(x =30, y=100)
         self.t3 = tk.Frame(self.ventana)
         self.t3.place(x=100, y=480, width=570, height=190)
 
@@ -90,9 +95,10 @@ class Principal():
         self.id_card = self.tabla.id_card
         self.tabla.indice = -1
         card = self.list_data[self.id_card]
-        self.tajeta.insert(tk.END, card[2])
+        self.tajeta.insert(tk.END, card[4])
         self.posicion.insert(tk.END, card[3])
-        print(self.id_card)
+        self.nombre_value.config(text=card[1])
+        self.tema_value.config(text=card[2])
 
 if __name__ == "__main__":
     juego  = Principal()

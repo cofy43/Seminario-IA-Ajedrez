@@ -14,7 +14,7 @@ class New_card(tk.Frame):
         self.otra_ventana.geometry("900x500")
         self.otra_ventana.title("Crear tarjeta")
         self.otra_ventana['bg'] = '#9575cd'
-        self.last_id = last_id
+        self.last_id = last_id +1
 
         #self.button1 = tk.Button(self.otra_ventana, text="Copiar partida", fg='white', bg='#65499c')
         #self.button1.place(x=740, y=20)

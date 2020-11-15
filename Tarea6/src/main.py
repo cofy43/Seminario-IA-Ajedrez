@@ -44,7 +44,7 @@ class Principal():
         self.new_card.place(x = 750, y = 104)
         self.edit_card = tk.Button(self.ventana, text="Editar tarjeta", command = self.edit_card, fg='white', bg='#1c313a')
         self.edit_card.place(x = 750, y = 154)
-        self.delete_card = tk.Button(self.ventana, text="Borrar tarjeta", command = self.create_card, fg='white', bg='#1c313a')
+        self.delete_card = tk.Button(self.ventana, text="Borrar tarjeta", command = self.delete_card, fg='white', bg='#1c313a')
         self.delete_card.place(x = 750, y = 204)
         self.search_card = tk.Button(self.ventana, text="Buscar tarjeta", command = self.create_card, fg='white', bg='#1c313a')
         self.search_card.place(x = 750, y = 254)
@@ -68,6 +68,21 @@ class Principal():
     def edit_card(self):
         card = self.list_data[self.id_card]
         edit = Edit_card(self.connector, self.ventana, card)
+    
+    def delete_card(self):
+        card = self.list_data[self.id_card]
+        mensaje = ("Esta seguro de que quiere eliminar la tarjeta con Nombre: %s y Tema: %s.\n Este movimiento es irreversible.") % (card[1], card[2])
+        respuesta = messagebox.askquestion(title=None, message=mensaje)
+        if (respuesta == 'yes'):
+            self.connector.borrar(card[0])
+            print("antes")
+            print(self.list_data)
+            self.connector.connect()
+            self.list_data = self.connector.list_data
+            self.tabla = None
+            self.crea_tabla()
+            print("despues")
+            print(self.list_data)
 
     def on_closing(self):
         print("cerro nueva carta")

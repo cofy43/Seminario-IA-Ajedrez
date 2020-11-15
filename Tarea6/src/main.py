@@ -12,23 +12,24 @@ import io
 from db_connector import Db_connector
 from table import Table
 from new_card import New_card
+from edit_card import Edit_card
 
 class Principal():
     def __init__(self) :
         self.ventana = tk.Tk()
         self.ventana.geometry("900x690")
         self.ventana.title("Targetero")
-        self.ventana['bg'] = '#26a69a'
+        self.ventana['bg'] = '#455a64'
         self.connector = Db_connector()
         self.connector.connect()
 
-        self.nombre = tk.Label(self.ventana, text='Nombre: ', bg='#26a69a', fg="black")
+        self.nombre = tk.Label(self.ventana, text='Nombre: ', bg='#455a64', fg="white")
         self.nombre.place(x =30, y=20)
-        self.nombre_value = tk.Label(self.ventana, text='--', bg='#26a69a', fg="black")
+        self.nombre_value = tk.Label(self.ventana, text='--', bg='#455a64', fg="white")
         self.nombre_value.place(x =100, y=20)
-        self.tema = tk.Label(self.ventana, text='Tema: ', bg='#26a69a', fg="black")
+        self.tema = tk.Label(self.ventana, text='Tema: ', bg='#455a64', fg="white")
         self.tema.place(x =30, y=100)
-        self.tema_value = tk.Label(self.ventana, text='--', bg='#26a69a', fg="black")
+        self.tema_value = tk.Label(self.ventana, text='--', bg='#455a64', fg="white")
         self.tema_value.place(x =85, y=100)
 
         self.tajeta = tk.Text(self.ventana, width=40, height=18)
@@ -39,16 +40,16 @@ class Principal():
         self.t3 = tk.Frame(self.ventana)
         self.t3.place(x=100, y=480, width=570, height=190)
 
-        self.new_card = tk.Button(self.ventana, text="Nueva tarjeta", command = self.create_card, fg='white', bg='#00766c')
+        self.new_card = tk.Button(self.ventana, text="Nueva tarjeta", command = self.create_card, fg='white', bg='#1c313a')
         self.new_card.place(x = 750, y = 104)
-        self.edit_card = tk.Button(self.ventana, text="Editar tarjeta", command = self.create_card, fg='white', bg='#00766c')
+        self.edit_card = tk.Button(self.ventana, text="Editar tarjeta", command = self.edit_card, fg='white', bg='#1c313a')
         self.edit_card.place(x = 750, y = 154)
-        self.delete_card = tk.Button(self.ventana, text="Borrar tarjeta", command = self.create_card, fg='white', bg='#00766c')
+        self.delete_card = tk.Button(self.ventana, text="Borrar tarjeta", command = self.create_card, fg='white', bg='#1c313a')
         self.delete_card.place(x = 750, y = 204)
-        self.search_card = tk.Button(self.ventana, text="Buscar tarjeta", command = self.create_card, fg='white', bg='#00766c')
+        self.search_card = tk.Button(self.ventana, text="Buscar tarjeta", command = self.create_card, fg='white', bg='#1c313a')
         self.search_card.place(x = 750, y = 254)
 
-        self.close = tk.Button(self.ventana, text="Terminar", command = self.ventana.destroy, fg='white', bg='#00766c')
+        self.close = tk.Button(self.ventana, text="Terminar", command = self.ventana.destroy, fg='white', bg='#1c313a')
         self.close.place(x = 750, y = 554)
 
         self.list_data = self.connector.list_data
@@ -64,13 +65,17 @@ class Principal():
         new_card = New_card(self.connector, self.ventana, len(self.list_data))
         new_card.otra_ventana.protocol("WM_DELETE_WINDOW", self.on_closing)
 
+    def edit_card(self):
+        card = self.list_data[self.id_card]
+        edit = Edit_card(self.connector, self.ventana, card)
+
     def on_closing(self):
         print("cerro nueva carta")
         self.connector.connect()
         self.crea_tabla()
 
     def crea_tabla(self):
-        headers = (u"id", u"Nombre", u"Tarjeta", u"Tema")
+        headers = (u"id", u"Nombre", u"Tarjeta")
         title_table = 'Número de tarjetas encontradas: {:d}'.format(len(self.list_data))
         self.tabla = Table(self.t3, title=title_table, headers=headers, list_game=self.list_data, ventana=self.ventana)
         self.tabla.pack()
@@ -80,7 +85,7 @@ class Principal():
         for item in self.list_data:
             i = 0
             for key in item:
-                if i != 3:
+                if i != 3 and i != 4:
                     temp.append(key)
                 i += 1
             col.append(temp)

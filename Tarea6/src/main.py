@@ -63,7 +63,7 @@ class Principal():
     def create_card(self):
         print("boton")
         new_card = New_card(self.connector, self.ventana, len(self.list_data))
-        new_card.otra_ventana.protocol("WM_DELETE_WINDOW", self.on_closing)
+        new_card.otra_ventana.protocol("WM_DESTROY_WINDOW", self.on_closing)
 
     def edit_card(self):
         card = self.list_data[self.id_card]
@@ -75,14 +75,7 @@ class Principal():
         respuesta = messagebox.askquestion(title=None, message=mensaje)
         if (respuesta == 'yes'):
             self.connector.borrar(card[0])
-            print("antes")
-            print(self.list_data)
-            self.connector.connect()
-            self.list_data = self.connector.list_data
-            self.tabla = None
-            self.crea_tabla()
-            print("despues")
-            print(self.list_data)
+            self.refresca_tabla()
 
     def on_closing(self):
         print("cerro nueva carta")
@@ -120,6 +113,12 @@ class Principal():
         self.nombre_value.config(text=card[1])
         self.tema_value.config(text=card[2])
 
+    def refresca_tabla(self):
+        self.connector.connect()
+        self.list_data = self.connector.list_data
+        self.tabla.destroy()
+        self.tabla = None
+        self.crea_tabla()
 if __name__ == "__main__":
     juego  = Principal()
     juego.ventana.mainloop() 

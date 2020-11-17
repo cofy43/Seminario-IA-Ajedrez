@@ -44,6 +44,12 @@ Se requiere la biblioteca  [mysql.connector](https://dev.mysql.com/doc/connector
 pip3 install mysql-connector-python
 ```
 
+Se requiere la biblioteca  [pgn_parser](https://pypi.org/project/chess/) para instalar en Linux:.
+
+```bash
+pip install chess
+```
+
 ### Instalación 🔧
 
 en la carpeta src/ ejecutar python3 interfaz.py
@@ -54,7 +60,10 @@ python3 interfaz.py
 
 ## Ejemplo de ejecución 📦
 
-![Alt text](ejecución.png?raw=true "Title") 
+![Alt text](pantalla_principal.png?raw=true "Title") 
+![Alt text](nueva_tarjeta.png?raw=true "Title") 
+![Alt text](diagramador.png?raw=true "Title") 
+![Alt text](editar_tarjeta.png?raw=true "Title") 
 
 
 ## Construido con 🛠️
@@ -63,4 +72,4 @@ Python3
 
 ## Autor ✒️
 
-* **Martin Felipe Espinal Cruces** - ** - [villanuevand](https://https://github.com/Cofy43)
+* **Martin Felipe Espinal Cruces** - ** - [Cofy43](https://https://github.com/Cofy43)

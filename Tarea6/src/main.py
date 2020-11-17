@@ -46,8 +46,8 @@ class Principal():
         self.edit_card.place(x = 750, y = 154)
         self.delete_card = tk.Button(self.ventana, text="Borrar tarjeta", command = self.delete_card, fg='white', bg='#1c313a')
         self.delete_card.place(x = 750, y = 204)
-        self.search_card = tk.Button(self.ventana, text="Buscar tarjeta", command = self.create_card, fg='white', bg='#1c313a')
-        self.search_card.place(x = 750, y = 254)
+        self.refresh_info = tk.Button(self.ventana, text="Refescar\n información", command = self.refresca_tabla, fg='white', bg='#1c313a')
+        self.refresh_info.place(x = 750, y = 304)
 
         self.close = tk.Button(self.ventana, text="Terminar", command = self.ventana.destroy, fg='white', bg='#1c313a')
         self.close.place(x = 750, y = 554)

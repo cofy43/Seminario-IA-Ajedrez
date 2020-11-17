@@ -9,6 +9,7 @@ class Edit_card(tk.Frame):
         self.conector = conector
         self.otra_ventana = tk.Toplevel(ventana)
         self.otra_ventana.geometry("750x520")
+        self.otra_ventana.title("Editar tarjeta")
         self.otra_ventana['bg'] = '#2196f3'
         self.card = card
         nombre = self.card[1]
